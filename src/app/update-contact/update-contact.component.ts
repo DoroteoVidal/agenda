@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ContactService } from '../services/contact.service';
 import Swal from 'sweetalert2';
 import { DTOContact } from '../model/DTOcontact.interface';
+import { ValidatorService } from '../services/validator.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-update-contact',
@@ -17,7 +19,9 @@ export class UpdateContactComponent implements OnInit {
 
   constructor(private route : ActivatedRoute,
     private contactService : ContactService,
-    private router : Router) { }
+    private router : Router,
+    private validatorService : ValidatorService,
+    private snack : MatSnackBar) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -33,6 +37,13 @@ export class UpdateContactComponent implements OnInit {
   }
 
   updateContact() {
+    if(!this.validatorService.isValidEmail(this.contact.email)) {
+      this.snack.open('El email no es valido', '' ,{
+        duration : 3000
+      })
+      return;
+    }
+
     this.contactService.update(this.id, this.contact).subscribe(
       (data) => {
         Swal.fire('Contacto actualizado', 'El contacto ha sido actualizado con exito', 'success').then(

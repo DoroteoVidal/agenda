@@ -5,7 +5,7 @@
                 <mat-card>
                     <h1 class="text-center">Mis contactos</h1>
                     <div class="container text-end mt20">
-                        <button routerLink="/new" mat-raised-button color="primary">Agregar contacto</button>
+                        <button routerLink="/new" mat-stroked-button color="primary"><mat-icon>add</mat-icon>Agregar contacto</button>
                     </div>
                     <mat-card-content>
                         <table mat-table [dataSource]="contacts" style="width: 100%;">
@@ -28,10 +28,10 @@
                             <ng-container matColumnDef="buttons">
                                 <mat-header-cell mat-header-cell *matHeaderCellDef></mat-header-cell>
                                 <mat-cell *matCellDef="let element">
-                                    <button [routerLink]="'/'+element.id" mat-mini-fab style="background-color: rgb(34, 167, 63); margin-left: 20px;">
+                                    <button [routerLink]="'/'+element.id" mat-icon-button color="primary" style="margin-left: 20px;">
                                         <mat-icon>edit</mat-icon>
                                     </button>
-                                    <button (click)="deleteContact(element.id)" mat-mini-fab color="warn" style="margin-left: 10px;">
+                                    <button (click)="deleteContact(element.id)" mat-icon-button color="warn" style="margin-left: 10px;">
                                         <mat-icon>delete</mat-icon>
                                     </button>
                                 </mat-cell>
