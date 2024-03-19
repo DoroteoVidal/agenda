@@ -1,1 +1,48 @@
-<p>contact-list works!</p>
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row mt20">
+            <div class="col-md-12">
+                <mat-card>
+                    <h1 class="text-center">Mis contactos</h1>
+                    <div class="container text-end mt20">
+                        <button routerLink="/new" mat-raised-button color="primary">Agregar contacto</button>
+                    </div>
+                    <mat-card-content>
+                        <table mat-table [dataSource]="contacts" style="width: 100%;">
+                            <ng-container matColumnDef="id">
+                                <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="email">
+                                <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{ element.email }} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="createdAt">
+                                <mat-header-cell mat-header-cell *matHeaderCellDef>Fecha de creacion</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{ element.createdAt | date:'dd/MM/yyyy hh:mm a' }} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="buttons">
+                                <mat-header-cell mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                <mat-cell *matCellDef="let element">
+                                    <button [routerLink]="'/'+element.id" mat-mini-fab style="background-color: rgb(34, 167, 63); margin-left: 20px;">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                    <button (click)="deleteContact(element.id)" mat-mini-fab color="warn" style="margin-left: 10px;">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+                            <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+                        </table>                              
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

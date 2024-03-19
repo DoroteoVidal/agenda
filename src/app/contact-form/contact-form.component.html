@@ -1,0 +1,31 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row mt20">
+            <div class="col-md-6 offset-md-3">
+                <mat-card>
+                    <div class="container text-center">
+                        <img src="../../assets/add-contact.png" alt="" width="100" height="100">
+                    </div>
+                    <h1 class="text-center">Agregar contacto</h1>
+                    <form (ngSubmit)="save()">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Nombre</mat-label>
+                            <input [(ngModel)]="contactData.name" name="name" type="text" required matInput placeholder="Ingrese su nombre">
+                            <mat-hint>El nombre debe ser valido</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input [(ngModel)]="contactData.email" name="email" required type="email" matInput placeholder="Ingrese su email">
+                            <mat-hint>El email debe ser valido</mat-hint>
+                        </mat-form-field>
+                        <br><br>
+                        <div class="container text-center">
+                            <button mat-stroked-button routerLink="/">Cancelar</button>
+                            <button style="margin-left:20px;" mat-raised-button color="primary">Agregar</button>    
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

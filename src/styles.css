@@ -2,3 +2,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.text-center{
+    text-align: center;
+}
+
+.text-end{
+    text-align: end;
+}
+
+.mt20{
+    margin-top: 20px !important;
+}
+
+.full-width{
+    width: 100%;
+}
